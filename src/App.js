@@ -6,9 +6,12 @@ import Addtask from "./components/add";
 class App extends React.Component {
   state = {
     todos: [
-      { text: "Water Plants", completed: false },
-      { text: "Feed Python", completed: false },
-      { text: "Learn Python", completed: false }
+      { text: "Water Plants", completed: false, category: "personal" },
+      { text: "Feed Python", completed: false, category: "personal" },
+      { text: "Learn Python", completed: false, category: "personal" },
+      { text: "complete checklist", completed: false, category: "work" },
+      { text: "fix bugs", completed: false, category: "work" },
+      { text: "get drunk", completed: false, category: "work" }
     ]
   };
   render() {
