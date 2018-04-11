@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/task.css";
 
 function Task({ task, removeTask, toggleCompleteTask }) {
   return (
@@ -16,8 +17,8 @@ function Task({ task, removeTask, toggleCompleteTask }) {
         </label>
       </h4>
       <div className="list-group-item-text">
-        <span className="label label-success lb-md category-default">
-          {task.category}{" "}
+        <span className="label label-success lb-md category-default ">
+          {task.category}
         </span>
         <span
           className="badge badge-info pull-right"

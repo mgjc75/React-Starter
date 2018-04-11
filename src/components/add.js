@@ -7,20 +7,31 @@ class Addtask extends React.Component {
 
   render() {
     return (
-      <div className="well well-sm well-info form-inline">
-        <div className="form-group">
-          <label htmlFor="task">New Task</label>
+      <div className="form-group row">
+        <div className="col-md-2">
+          <label>Category</label>
+          <select className="form-control" id="category">
+            <option>Personal</option>
+            <option>Work</option>
+          </select>
+        </div>
+        <div className="col-md-4">
+          <label>Task</label>
           <input
             type="text"
-            className="form-control"
+            className="form-control add-task"
             id="newTask"
+            placeholder="Enter new task"
+            name="newTask"
             onKeyUp={this.handleKeyUp}
             onChange={this.handleChange}
             value={this.state.input}
           />
+        </div>
+        <div className="col-md-4 text-bottom">
           <button
             type="submit"
-            className="btn btn-info"
+            className="btn btn-default"
             onClick={this.handleClick}
           >
             Submit

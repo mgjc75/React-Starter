@@ -1,10 +1,10 @@
 import React from "react";
 import Task from "./task";
 
-function Checklist({ todos, removeTask, toggleCompleteTask }) {
+function Checklist({ tasks, removeTask, toggleCompleteTask }) {
   return (
     <ul className="list-group">
-      {todos.map((task, index) => {
+      {tasks.map((task, index) => {
         return (
           <Task
             task={task}

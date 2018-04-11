@@ -1,0 +1,6 @@
+.category-default {
+  width: 100px;
+  opacity: 0.8;
+  min-width: 100px !important;
+  display: inline-block !important;
+}

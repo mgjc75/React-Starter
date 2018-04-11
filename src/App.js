@@ -2,10 +2,12 @@ import React from "react";
 import Heading from "./components/heading";
 import Checklist from "./components/list";
 import Addtask from "./components/add";
+import Savetask from "./components/save";
+import "./css/add.css";
 
 class App extends React.Component {
   state = {
-    todos: [
+    tasks: [
       { text: "Water Plants", completed: false, category: "personal" },
       { text: "Feed Python", completed: false, category: "personal" },
       { text: "Learn Python", completed: false, category: "personal" },
@@ -14,8 +16,9 @@ class App extends React.Component {
       { text: "get drunk", completed: false, category: "work" }
     ]
   };
+
   render() {
-    const { todos } = this.state;
+    const { tasks } = this.state;
     return (
       <div id="container">
         <div className="panel panel-info">
@@ -23,9 +26,16 @@ class App extends React.Component {
             <Heading name="Mark" />
           </div>
           <div className="panel-body">
-            <Addtask addTask={this.addTask} />
+            <div className="row">
+              <div className="col-md-11">
+                <Addtask addTask={this.addTask} />
+              </div>
+              <div className="col-md-1 text-right">
+                <Savetask />
+              </div>
+            </div>
             <Checklist
-              todos={todos}
+              tasks={tasks}
               removeTask={this.removeTask}
               toggleCompleteTask={this.toggleCompleteTask}
             />
@@ -37,7 +47,7 @@ class App extends React.Component {
 
   removeTask = taskToRemove => {
     this.setState({
-      todos: this.state.todos.filter(task => {
+      tasks: this.state.tasks.filter(task => {
         return task !== taskToRemove;
       })
     });
@@ -45,7 +55,7 @@ class App extends React.Component {
 
   toggleCompleteTask = taskToComplete => {
     this.setState({
-      todos: this.state.todos.map(task => {
+      tasks: this.state.tasks.map(task => {
         if (task === taskToComplete) {
           const newTask = { ...task, completed: !task.completed };
           return newTask;
@@ -60,13 +70,17 @@ class App extends React.Component {
       text: taskToAdd,
       completed: false
     };
-    const taskLength = this.state.todos.filter(task => {
+    const taskLength = this.state.tasks.filter(task => {
       return task.text === taskToAdd;
     }).length;
     if (taskLength === 0) {
-      this.setState({ todos: [newTask, ...this.state.todos] });
+      this.setState({ tasks: [newTask, ...this.state.tasks] });
     }
   };
+
+  saveTask({ stateData }) {
+    localStorage.setItem("data", JSON.stringify(stateData));
+  }
 }
 
 export default App;
